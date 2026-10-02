@@ -8,7 +8,7 @@
 
 灵感来自 Cookie Clicker、Universal Paperclips、Kittens Game、Melvor Idle 和 NGU Idle。
 
-[![游戏截图](docs/screenshot.png)](https://qianjinydx.github.io/research-idle/)
+<picture><img src="docs/screenshot.png" alt="游戏截图" width="100%"></picture>
 
 ## 玩法
 
