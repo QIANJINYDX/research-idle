@@ -689,7 +689,7 @@
   // ───────────────────────── 访问计数 ─────────────────────────
   // 游戏页每个浏览器会话计一次；README 与设置页用 query_only 只读，不会增加计数。
   const COUNTER = 'https://visitor-badge.laobi.icu/badge?page_id=qianjinydx.research-idle';
-  const COUNTER_VIEW = COUNTER + '&query_only=true&left_text=%E8%AE%BF%E9%97%AE%E9%87%8F&left_color=%23232e47&right_color=%232e7b49';
+  const COUNTER_VIEW = COUNTER + '&query_only=true&left_text=%E8%AE%BF%E9%97%AE%E9%87%8F%20%20%20&left_color=%23232e47&right_color=%232e7b49';
   function countVisit() {
     const local = !/^https?:$/.test(location.protocol) || /^(localhost|127\.0\.0\.1|\[::1\])$|\.(localhost|test|local)$/.test(location.hostname);
     if (local) return;
