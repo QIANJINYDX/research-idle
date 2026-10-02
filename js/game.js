@@ -14,7 +14,12 @@
   const listeners = {};
   const on = (e, f) => (listeners[e] = listeners[e] || []).push(f);
   const emit = (e, ...a) => (listeners[e] || []).forEach(f => f(...a));
-  const log = (msg, kind = 'info') => emit('log', msg, kind);
+  const LOG_MAX = 80;
+  function log(msg, kind = 'info') {
+    const e = { t: Date.now(), m: msg, k: kind };
+    if (S) { S.logs.push(e); if (S.logs.length > LOG_MAX) S.logs.splice(0, S.logs.length - LOG_MAX); }
+    emit('log', msg, kind, e.t);
+  }
 
   // ───────────────────────── 状态 ─────────────────────────
   const blankStats = () => ({ data: 0, funding: 0, citations: 0, papers: 0, clicks: 0, eurekas: 0, time: 0 });
@@ -38,6 +43,7 @@
         ended: false, endedAt: 0, noClick: 0, maxCps: 0, saw2: false, bestRunTime: 0,
       },
       settings: { fmt: 'cn', theme: 'auto', buyAmt: 1, autoHire: true, autoProj: true, ticker: true, particles: true },
+      logs: [],
       lastTick: Date.now(),
     };
     DATA.STAFF.forEach(x => (s.staff[x.id] = 0));

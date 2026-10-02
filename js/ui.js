@@ -211,14 +211,16 @@
   }
 
   // ───────────────────────── 日志 / 提示 ─────────────────────────
-  function addLog(msg, kind) {
+  function addLog(msg, kind, t) {
     const li = document.createElement('li');
     li.className = 'k-' + kind;
-    const d = new Date();
-    li.innerHTML = `<time>${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}</time>${esc(msg)}`;
+    const d = new Date(t || Date.now());
+    const p2 = n => String(n).padStart(2, '0');
+    const day = d.toDateString() === new Date().toDateString() ? '' : `${d.getMonth() + 1}/${d.getDate()} `;
+    li.innerHTML = `<time>${day}${p2(d.getHours())}:${p2(d.getMinutes())}</time>${esc(msg)}`;
     const ol = $('#log');
     ol.prepend(li);
-    while (ol.children.length > 60) ol.lastChild.remove();
+    while (ol.children.length > 80) ol.lastChild.remove();
   }
   function toast(html, kind = '') {
     const el = document.createElement('div');
@@ -687,7 +689,6 @@
   // ───────────────────────── 启动 ─────────────────────────
   let resetting = false;
   function boot() {
-    G.on('log', addLog);
     G.on('ach', a => toast(`🏅 获得成就 <b>${esc(a.name)}</b><br><small>${esc(a.desc)}</small>`));
     G.on('eureka-show', showEureka);
     G.on('eureka-hide', hideEureka);
@@ -700,6 +701,8 @@
     initBench();
     $('#nb-no').textContent = S().stats.prestiges + 1;
     if (!S().settings.ticker) $('#ticker').style.display = 'none';
+    S().logs.forEach(e => addLog(e.m, e.k, e.t));
+    G.on('log', addLog);
     addLog('欢迎回到实验室。', 'info');
     if (S().eureka.live > 0) showEureka();
 
