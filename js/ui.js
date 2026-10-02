@@ -549,7 +549,7 @@
             <button class="btn" id="set-import">导入存档</button>
             <span class="hint">每 15 秒自动保存到本地浏览器。</span></div>
           <div class="row"><label>危险区</label><button class="btn danger" id="set-reset">删除存档并重新开始</button></div>
-          <div class="row"><label>关于</label><span class="hint">《科研挂机》灵感来自 Cookie Clicker、Universal Paperclips、Kittens Game、Melvor Idle 与 NGU Idle。<br>所有数据只保存在你的浏览器中。</span></div>
+          <div class="row"><label>关于</label><span class="hint">《科研挂机》灵感来自 Cookie Clicker、Universal Paperclips、Kittens Game、Melvor Idle 与 NGU Idle。<br>所有数据只保存在你的浏览器中。<br>源码：<a href="https://github.com/QIANJINYDX/research-idle" target="_blank" rel="noopener" style="color:var(--blue)">github.com/QIANJINYDX/research-idle</a></span></div>
           <div class="row"><label></label><button class="btn" id="set-help">📖 玩法说明</button></div>
         </div>`;
     },

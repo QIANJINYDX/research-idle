@@ -103,6 +103,18 @@ button { font: inherit; color: inherit; }
 .res.cite .val { color: var(--purple); }
 .res.legacy .val { color: var(--amber); }
 
+.gh-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 8px; flex: none;
+  background: var(--paper-2); border: 1.5px solid var(--line); box-shadow: var(--shadow);
+  color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 600; transition: border-color .15s, transform .06s;
+}
+.gh-link:hover { border-color: var(--ink); }
+.gh-link:active { transform: translateY(1px); }
+@media (max-width: 860px) {
+  .gh-link { position: absolute; top: 14px; right: 16px; padding: 6px 9px; }
+  .gh-link span { display: none; }
+  .topbar { position: relative; }
+}
 .buffs { display: flex; gap: 8px; flex-wrap: wrap; min-height: 0; }
 .buffs:not(:empty) { margin-bottom: 10px; }
 .buff {
