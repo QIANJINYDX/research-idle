@@ -549,7 +549,7 @@
             <button class="btn" id="set-import">导入存档</button>
             <span class="hint">每 15 秒自动保存到本地浏览器。</span></div>
           <div class="row"><label>危险区</label><button class="btn danger" id="set-reset">删除存档并重新开始</button></div>
-          <div class="row"><label>关于</label><span class="hint">《科研挂机》灵感来自 Cookie Clicker、Universal Paperclips、Kittens Game、Melvor Idle 与 NGU Idle。<br>所有数据只保存在你的浏览器中。<br>源码：<a href="https://github.com/QIANJINYDX/research-idle" target="_blank" rel="noopener" style="color:var(--blue)">github.com/QIANJINYDX/research-idle</a></span></div>
+          <div class="row"><label>关于</label><span class="hint">《科研挂机》灵感来自 Cookie Clicker、Universal Paperclips、Kittens Game、Melvor Idle 与 NGU Idle。<br>所有数据只保存在你的浏览器中。<br>源码：<a href="https://github.com/QIANJINYDX/research-idle" target="_blank" rel="noopener" style="color:var(--blue)">github.com/QIANJINYDX/research-idle</a><br><img src="${COUNTER_VIEW}" alt="游戏访问量" style="margin-top:6px;height:20px" loading="lazy"></span></div>
           <div class="row"><label></label><button class="btn" id="set-help">📖 玩法说明</button></div>
         </div>`;
     },
@@ -686,6 +686,17 @@
     el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
   }
 
+  // ───────────────────────── 访问计数 ─────────────────────────
+  // 游戏页每个浏览器会话计一次；README 与设置页用 query_only 只读，不会增加计数。
+  const COUNTER = 'https://visitor-badge.laobi.icu/badge?page_id=qianjinydx.research-idle';
+  const COUNTER_VIEW = COUNTER + '&query_only=true&left_text=%E6%B8%B8%E6%88%8F%E8%AE%BF%E9%97%AE%E9%87%8F&left_color=%23232e47&right_color=%232e7b49';
+  function countVisit() {
+    const local = !/^https?:$/.test(location.protocol) || /^(localhost|127\.0\.0\.1|\[::1\])$|\.(localhost|test|local)$/.test(location.hostname);
+    if (local) return;
+    try { if (sessionStorage.getItem('ri-counted')) return; sessionStorage.setItem('ri-counted', '1'); } catch (e) { /* 无痕模式等：照常计数 */ }
+    new Image().src = COUNTER;
+  }
+
   // ───────────────────────── 启动 ─────────────────────────
   let resetting = false;
   function boot() {
@@ -733,6 +744,7 @@
     addEventListener('beforeunload', () => { if (!resetting) G.save(); });
     document.addEventListener('visibilitychange', () => { if (document.hidden && !resetting) G.save(); });
     nextNews();
+    countVisit();
     setInterval(() => { if (S().settings.ticker) nextNews(); }, 11000);
     render();
   }
