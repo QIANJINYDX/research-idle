@@ -1,12 +1,14 @@
 # ⚗️ 科研挂机 · Research Idle
 
-[![游戏访问量](https://visitor-badge.laobi.icu/badge?page_id=qianjinydx.research-idle&query_only=true&left_text=%E6%B8%B8%E6%88%8F%E8%AE%BF%E9%97%AE%E9%87%8F&left_color=%23232e47&right_color=%232e7b49)](https://qianjinydx.github.io/research-idle/)
+[![访问量](https://visitor-badge.laobi.icu/badge?page_id=qianjinydx.research-idle&query_only=true&left_text=%E8%AE%BF%E9%97%AE%E9%87%8F&left_color=%23232e47&right_color=%232e7b49)](https://qianjinydx.github.io/research-idle/)
 
 一款科研主题的放置 / 增量游戏。从一只烧瓶开始做实验，写论文换经费，招募学生、博士后、超级计算机和 AI 科学家，攒引用、提升 h 指数，开宗立派、代代传承——最终解出**万物理论**。
 
 **在线游玩：** https://qianjinydx.github.io/research-idle/
 
 灵感来自 Cookie Clicker、Universal Paperclips、Kittens Game、Melvor Idle 和 NGU Idle。
+
+[![游戏截图](docs/screenshot.png)](https://qianjinydx.github.io/research-idle/)
 
 ## 玩法
 
