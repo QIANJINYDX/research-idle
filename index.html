@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>科研挂机 · Research Idle</title>
+  <meta name="description" content="一款科研主题的放置/增量游戏：做实验、写论文、攒引用、开宗立派，最终解出万物理论。">
+  <meta name="theme-color" content="#f6f1e4">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">⚗️</span>
+        <div>
+          <h1>科研挂机</h1>
+          <small>Research Idle · 实验记录本 No.<span id="nb-no">1</span></small>
+        </div>
+      </div>
+      <div class="resources" id="resources"></div>
+    </header>
+
+    <div class="buffs" id="buffs"></div>
+
+    <main class="layout">
+      <section class="col-left">
+        <div class="panel bench">
+          <div class="panel-title"><span>实验台</span><small id="bench-sub">点击烧瓶进行实验</small></div>
+          <button class="flask-btn" id="flask" aria-label="进行实验">
+            <svg viewBox="0 0 200 230" class="flask-svg" aria-hidden="true">
+              <defs>
+                <clipPath id="flaskClip">
+                  <path d="M78 26 h44 v58 l52 100 a20 20 0 0 1 -18 30 h-112 a20 20 0 0 1 -18 -30 l52 -100 z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#flaskClip)">
+                <rect x="0" y="0" width="200" height="230" class="glass"/>
+                <g class="liquid-wrap">
+                  <path class="liquid back" d="M-100 140 q25 -9 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V 240 H -100 Z"/>
+                  <path class="liquid" d="M-100 146 q25 9 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V 240 H -100 Z"/>
+                </g>
+                <circle class="bub b1" cx="80" cy="200" r="5"/>
+                <circle class="bub b2" cx="105" cy="205" r="3.5"/>
+                <circle class="bub b3" cx="125" cy="200" r="4.5"/>
+                <circle class="bub b4" cx="92" cy="210" r="2.5"/>
+                <circle class="bub b5" cx="115" cy="212" r="3"/>
+                <path class="shine" d="M60 170 l26 -52" />
+              </g>
+              <path class="outline" d="M78 26 h44 v58 l52 100 a20 20 0 0 1 -18 30 h-112 a20 20 0 0 1 -18 -30 l52 -100 z"/>
+              <rect class="rim" x="70" y="14" width="60" height="14" rx="5"/>
+              <g class="ticks"><path d="M128 120 h14 M134 140 h12 M140 160 h14"/></g>
+            </svg>
+          </button>
+          <div class="bench-stats">
+            <div><b id="click-val">1</b><span>数据 / 次实验</span></div>
+            <div><b id="dps">0</b><span>数据 / 秒</span></div>
+          </div>
+        </div>
+
+        <div class="panel desk">
+          <div class="panel-title"><span>写作台</span><small id="desk-sub">写作速度 ×1</small></div>
+          <div id="slots" class="slots"></div>
+          <div id="paper-tally" class="paper-tally"></div>
+        </div>
+
+        <div class="panel logbox">
+          <div class="panel-title"><span>实验日志</span></div>
+          <ol id="log" class="log"></ol>
+        </div>
+      </section>
+
+      <section class="col-right panel">
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <div class="tab-body" id="tab-body"></div>
+      </section>
+    </main>
+
+    <footer class="ticker" id="ticker"><span class="ticker-label">学术快讯</span><span class="ticker-text" id="ticker-text"></span></footer>
+  </div>
+
+  <div id="fx-layer" aria-hidden="true"></div>
+  <div id="eureka-layer"></div>
+  <div id="toasts"></div>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card" id="modal-card"></div></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
